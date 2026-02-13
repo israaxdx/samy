@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌸 Be my Valentine? (pink & red dream) 🌸</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffd0dd 0%, #ff3666 100%);
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', cursive, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* flower garden background (super cute & pink) */
+    body::after {
+      content: "🌸🌼🌺🌸🌼🌺🌸🌼🌺🌸🌼🌺🌸🌼🌺🌸🌼🌺🌸🌼🌺🌸🌼🌺🌸🌼🌺";
+      position: absolute;
+      font-size: 70px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      opacity: 0.25;
+      pointer-events: none;
+      transform: rotate(10deg) scale(1.3);
+      word-break: break-all;
+      z-index: 0;
+      line-height: 1.8;
+      color: #ff99bb;
+      text-shadow: 0 0 10px #ffc0cb;
+    }
+
+    /* floating doodles (flowers + cute things) */
+    .floating-doodles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .floating-doodles span {
+      position: absolute;
+      font-size: 2.8rem;
+      animation: wobble 8s infinite alternate ease-in-out;
+      opacity: 0.6;
+      filter: drop-shadow(0 8px 6px #ff99aa);
+    }
+
+    @keyframes wobble {
+      0% { transform: translateY(0px) rotate(0deg) scale(1); }
+      100% { transform: translateY(120px) rotate(20deg) scale(1.1); }
+    }
+
+    /* doodle positions */
+    .d1 { top: 5%; left: 3%; animation-duration: 14s; }
+    .d2 { top: 15%; right: 6%; animation-duration: 11s; }
+    .d3 { bottom: 12%; left: 8%; animation-duration: 17s; }
+    .d4 { bottom: 25%; right: 12%; animation-duration: 13s; }
+    .d5 { top: 30%; left: 20%; animation-duration: 19s; }
+    .d6 { top: 70%; right: 20%; animation-duration: 12s; }
+    .d7 { bottom: 5%; left: 20%; animation-duration: 16s; }
+    .d8 { top: 45%; right: 5%; animation-duration: 15s; }
+    .d9 { bottom: 40%; left: 2%; animation-duration: 18s; }
+    .d10 { top: 80%; left: 15%; animation-duration: 14s; }
+
+    .card {
+      background: rgba(255, 250, 240, 0.94);
+      backdrop-filter: blur(6px);
+      padding: 2.5rem 2rem;
+      border-radius: 70px 20px 70px 20px;
+      box-shadow: 0 30px 40px rgba(210, 30, 90, 0.4), 0 0 0 8px #ffb3c6 inset, 0 0 0 16px #ff4d6d inset;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+      z-index: 30;
+      border: 6px dotted #fff0f3;
+    }
+
+    .card h2 {
+      font-size: 2.6rem;
+      color: #b3003b;
+      text-shadow: 4px 4px 0 #ffb0c3, 0 0 30px #ff66a5;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+      background: rgba(255, 210, 225, 0.7);
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      border-radius: 120px;
+      transform: rotate(-1deg);
+      border: 3px solid white;
+    }
+
+    .heart-deco {
+      font-size: 4rem;
+      line-height: 1;
+      margin: 0 0 10px 0;
+      filter: drop-shadow(0 8px 6px #ff80a0);
+      animation: float 2.2s infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    .flower-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 2.8rem;
+      margin: 10px 0 20px;
+      filter: drop-shadow(0 6px 3px #ff87a5);
+    }
+
+    .button-panel {
+      margin: 2.8rem 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      position: relative;
+    }
+
+    button {
+      padding: 20px 45px;
+      border: none;
+      border-radius: 60px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 14px 0 #a04b5f, 0 12px 25px #b3004b;
+      transition: 0.1s ease-out;
+      letter-spacing: 3px;
+      transform: rotate(0.7deg);
+      border: 3px solid white;
+    }
+
+    .yes {
+      background: #ff2a5e;
+      color: white;
+      text-shadow: 3px 3px 0 #a00035;
+      box-shadow: 0 12px 0 #8e2d4a, 0 14px 25px #c90045;
+    }
+
+    .yes:hover {
+      background: #ff4d7a;
+      transform: scale(1.05) rotate(-0.7deg);
+      box-shadow: 0 10px 0 #8e2d4a, 0 18px 30px #ff3370;
+    }
+
+    .no {
+      background: #fbc4d9;
+      color: #aa2850;
+      border: 4px solid #ff98b5;
+      box-shadow: 0 12px 0 #b3748c, 0 14px 25px #b34d6e;
+      font-size: 2rem;
+      padding: 18px 40px;
+    }
+
+    /* impossible no movement */
+    .moving-no {
+      transition: transform 0.08s ease, background 0.2s;
+      will-change: transform;
+    }
+
+    /* valentine surprise page (yes) */
+    .valentine-land {
+      background: #ffe6f0;
+      border: 20px double #ff3b6f;
+    }
+
+    .big-message {
+      font-size: 3.8rem;
+      color: #c5003a;
+      margin: 15px 0;
+      line-height: 1.3;
+      background: #ffeef4;
+      border-radius: 120px;
+      padding: 20px 15px;
+      border: 5px dotted #ff80a5;
+    }
+
+    .love-poem {
+      font-size: 2rem;
+      background: #ffdde8;
+      padding: 30px 20px;
+      border-radius: 80px 20px 80px 20px;
+      color: #a00035;
+      margin: 25px 0;
+      border: 8px dotted #ff98b5;
+      box-shadow: inset 0 0 0 6px white;
+    }
+
+    .footer-hearts {
+      font-size: 3.2rem;
+      letter-spacing: 20px;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    .back-link {
+      background: #ffb6c9;
+      padding: 15px 40px;
+      border-radius: 60px;
+      color: #a0003a;
+      font-size: 2rem;
+      border: 4px solid white;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 8px 0 #b36f8a;
+      margin: 15px 0 5px;
+      display: inline-block;
+    }
+
+    .back-link:hover {
+      transform: scale(1.02);
+      background: #ffc0d0;
+    }
+
+    /* extra stickers */
+    .cute-extra {
+      font-size: 2.2rem;
+      margin: 10px 0 5px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <!-- floating flowers & cute doodles (background magic) - no copy link, just beauty -->
+  <div class="floating-doodles">
+    <span class="d1">🌸</span>
+    <span class="d2">🌼</span>
+    <span class="d3">🌺</span>
+    <span class="d4">🌷</span>
+    <span class="d5">💮</span>
+    <span class="d6">🏵️</span>
+    <span class="d7">🌹</span>
+    <span class="d8">🌻</span>
+    <span class="d9">🪷</span>
+    <span class="d10">🌸</span>
+  </div>
+
+  <!-- main container - dynamic content -->
+  <div id="app-container" style="width:100%; display:flex; justify-content:center; z-index:40; position:relative;"></div>
+
+  <script>
+    (function() {
+      const container = document.getElementById('app-container');
+
+      // ---------- question card (valentine ask) ----------
+      function buildQuestionCard() {
+        return `
+          <div class="card" id="question-card">
+            <div class="heart-deco">💗🌸💗</div>
+            <h2>Will you be my Valentine? 💖</h2>
+            <div class="flower-row">
+              <span>🌺</span><span>🪷</span><span>🌼</span><span>🌸</span><span>🌷</span>
+            </div>
+            <div class="button-panel">
+              <button class="yes" id="yesBtn">YES 💋</button>
+              <button class="no moving-no" id="noBtn">No 🥺</button>
+            </div>
+            <div class="cute-extra">
+              <span>🐻‍❄️</span><span>🍰</span><span>💕</span><span>🐰</span><span>🍓</span>
+            </div>
+            <p style="color:#b34462; margin-top:20px; font-size:1.4rem; background:white; border-radius:40px; padding:6px 15px; display:inline-block;">💋 the "No" is super shy! 💋</p>
+          </div>
+        `;
+      }
+
+      // ---------- love page (after yes) ----------
+      function buildLovePage() {
+        return `
+          <div class="card valentine-land">
+            <div style="font-size:5rem; line-height:1.2;">Best Samy</div>
+            <div class="big-message">YOU DESERVE LOVE 💘</div>
+            <div class="love-poem">
+              💗 i hope you are always with me 💗<br>
+              <span style="font-size:3rem;">🌸❤️🌸</span><br>
+              you're sister will always love you 
+            </div>
+            <div style="font-size:2.8rem; background:#ffc0d5; border-radius:100px; padding:20px; margin:15px 0;">
+              💞 forever & always 💞
+            </div>
+            <div class="footer-hearts">
+              ❤️🧡💛💚💙💜
+            </div>
+            <div style="margin:30px 0 15px;">
+            
+            <div style="font-size:2.5rem; color:#cc3f66; letter-spacing:10px;">✨💋XOXO💋✨</div>
+            <div class="flower-row" style="margin-top:20px;">
+              🌼🌸🌺
+            </div>
+          </div>
+        `;
+      }
+
+      // ----- attach events to question card (impossible no + yes) -----
+      function attachQuestionEvents() {
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        if (noBtn) {
+          // make it run away on any near interaction
+          const runaway = () => {
+            // random offset within viewport but keep in card area (transform relative)
+            const x = (Math.random() * 400 - 200); // -200..200
+            const y = (Math.random() * 300 - 150); // -150..150
+            noBtn.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 10 - 5}deg) scale(0.95)`;
+            noBtn.style.background = '#ffb0c4';
+            noBtn.style.borderColor = '#ff6f9a';
+          };
+
+          noBtn.addEventListener('mouseenter', runaway);
+          noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            alert('🌸 No is too shy! You cannot catch me! 🌸');
+            runaway();
+          });
+          noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            runaway();
+            alert('🌸 hehe No runs away! 🌸');
+          });
+        }
+
+        if (yesBtn) {
+          yesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            container.innerHTML = buildLovePage();
+            const backBtn = document.getElementById('backToQuestion');
+            if (backBtn) {
+              backBtn.addEventListener('click', () => {
+                container.innerHTML = buildQuestionCard();
+                attachQuestionEvents(); // reactive buttons
+              });
+            }
+          });
+        }
+      }
+
+      // initial render
+      container.innerHTML = buildQuestionCard();
+      attachQuestionEvents();
+
+      // add a few animated hearts (extra flair)
+      const extraStyle = document.createElement('style');
+      extraStyle.innerHTML = `
+        .float-big-heart {
+          position: fixed;
+          bottom: 20px;
+          left: 20px;
+          font-size: 50px;
+          opacity: 0.6;
+          animation: slowDrift 12s infinite alternate;
+          z-index: 25;
+          pointer-events: none;
+        }
+        @keyframes slowDrift {
+          0% { transform: translateY(0) translateX(0) rotate(0deg); }
+          100% { transform: translateY(-130px) translateX(40px) rotate(25deg); }
+        }
+      `;
+      document.head.appendChild(extraStyle);
+      const bigHeart = document.createElement('div');
+      bigHeart.className = 'float-big-heart';
+      bigHeart.innerHTML = '💖🌸💖';
+      document.body.appendChild(bigHeart);
+    })();
+  </script>
+</body>
+</html>
